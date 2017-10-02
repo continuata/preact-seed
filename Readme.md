@@ -8,7 +8,7 @@ Uses (Standard linting)
 $ npm start
 ```
 
-### run tets
+### run tests
 ```
 $ npm run test
 ```
