@@ -1,5 +1,43 @@
+/* global window */
 import 'rxjs'
-import './style'
-import App from './components/app'
+import { h, Component } from 'preact'
+import { Router } from 'preact-router'
+import { Provider } from 'preact-redux'
+import { createStore, applyMiddleware, compose } from 'redux'
+import { createEpicMiddleware } from 'redux-observable'
 
-export default App
+import './style'
+import Header from './components/header'
+import Home from './components/routes/home'
+import Profile from './components/routes/profile'
+
+import epics from './model/epics'
+import actions from './model/epics/actions'
+import reducers from './model/reducers'
+
+const epicMiddleware = createEpicMiddleware(epics)
+const composeEnhancers = typeof window !== 'undefined' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose
+const store = createStore(reducers, {}, composeEnhancers(applyMiddleware(epicMiddleware)))
+store.dispatch(actions.appInit())
+
+/** @jsx h */
+export default class App extends Component {
+  handleRoute (e) {
+    App.currentUrl = e.url
+  }
+
+  render () {
+    return (
+      <div id='app'>
+        <Header />
+        <Provider store={store}>
+          <Router onChange={this.handleRoute}>
+            <Home path='/' />
+            <Profile path='/profile/' user='me' />
+            <Profile path='/profile/:user' />
+          </Router>
+        </Provider>
+      </div>
+    )
+  }
+}
