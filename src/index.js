@@ -8,6 +8,7 @@ import { createEpicMiddleware } from 'redux-observable'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/css/bootstrap-theme.min.css'
+import './assets/css/compiled/theme.css'
 
 import Header from './components/header'
 import Home from './components/routes/home'
