@@ -1,13 +1,13 @@
 import 'preact'
-import style from './style'
+import { Button, Jumbotron } from 'react-bootstrap'
 
 export default ({ children, ...props }) => (
-  <div class={style.home}>
+  <Jumbotron>
     <h1>Home</h1>
     <h2>{props.app.foo}</h2>
     <p>This is the Home component.</p>
-    <button onClick={props.doSomething.bind(this, {foo: 'bar'})}>
+    <Button bsStyle='primary' onClick={props.doSomething.bind(this, {foo: 'bar'})}>
       CLICK ME
-    </button>
-  </div>
+    </Button>
+  </Jumbotron>
 )

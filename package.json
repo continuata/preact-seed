@@ -17,18 +17,22 @@
     "extends": "eslint-config-synacor"
   },
   "devDependencies": {
+    "babel-plugin-module-resolver": "^2.7.1",
     "eslint": "^4.8.0",
     "eslint-config-synacor": "^2.0.0",
     "if-env": "^1.0.0",
     "preact-cli": "^1.4.1"
   },
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "es6-enum": "^1.1.0",
+    "jquery": "^3.2.1",
     "lodash": "^4.17.4",
     "preact": "^8.2.5",
     "preact-compat": "^3.17.0",
     "preact-redux": "^2.0.3",
     "preact-router": "^2.5.7",
+    "react-bootstrap": "^0.31.3",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-observable": "^0.16.0",

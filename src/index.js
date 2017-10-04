@@ -1,12 +1,14 @@
 /* global window */
 import 'rxjs'
-import { h, Component } from 'preact'
+import 'preact'
 import { Router } from 'preact-router'
 import { Provider } from 'preact-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { createEpicMiddleware } from 'redux-observable'
 
-import './style'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap-theme.min.css'
+
 import Header from './components/header'
 import Home from './components/routes/home'
 import Profile from './components/routes/profile'
@@ -21,23 +23,17 @@ const store = createStore(reducers, {}, composeEnhancers(applyMiddleware(epicMid
 store.dispatch(actions.appInit())
 
 /** @jsx h */
-export default class App extends Component {
-  handleRoute (e) {
-    App.currentUrl = e.url
-  }
-
-  render () {
-    return (
-      <div id='app'>
-        <Header />
-        <Provider store={store}>
-          <Router onChange={this.handleRoute}>
-            <Home path='/' />
-            <Profile path='/profile/' user='me' />
-            <Profile path='/profile/:user' />
-          </Router>
-        </Provider>
-      </div>
-    )
-  }
-}
+export default () => (
+  <div id='app'>
+    <Header />
+    <div class='container'>
+      <Provider store={store}>
+        <Router>
+          <Home path='/' />
+          <Profile path='/profile/' user='me' />
+          <Profile path='/profile/:user' />
+        </Router>
+      </Provider>
+    </div>
+  </div>
+)

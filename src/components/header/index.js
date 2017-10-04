@@ -1,14 +1,23 @@
 import 'preact'
-import { Link } from 'preact-router/match'
-import style from './style'
+import { Navbar, Nav, NavItem, Glyphicon } from 'react-bootstrap'
 
 export default (props) => (
-  <header class={style.header}>
-    <h1>Preact App</h1>
-    <nav>
-      <Link activeClassName={style.active} href='/'>Home</Link>
-      <Link activeClassName={style.active} href='/profile'>Me</Link>
-      <Link activeClassName={style.active} href='/profile/stu'>Stu</Link>
-    </nav>
-  </header>
+  <Navbar inverse collapseOnSelect>
+    <Navbar.Header>
+      <Navbar.Brand>
+        <a href='/'>React-Bootstrap</a>
+      </Navbar.Brand>
+      <Navbar.Toggle />
+    </Navbar.Header>
+    <Navbar.Collapse>
+      <Nav>
+        <NavItem eventKey={1} href='/profile'><Glyphicon glyph='list' /> Profile</NavItem>
+        <NavItem eventKey={2} href='/profile/stu'><Glyphicon glyph='user' /> Stu</NavItem>
+      </Nav>
+      <Nav pullRight>
+        <NavItem eventKey={1} href='/profile'>Profile</NavItem>
+        <NavItem eventKey={2} href='/profile/stu'>Stu</NavItem>
+      </Nav>
+    </Navbar.Collapse>
+  </Navbar>
 )

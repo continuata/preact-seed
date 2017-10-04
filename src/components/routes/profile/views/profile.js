@@ -1,15 +1,15 @@
 import 'preact'
-import style from './style'
+import { Button, Jumbotron } from 'react-bootstrap'
 
 export default ({ children, ...props }) => (
-  <div class={style.profile}>
-    <h1>Profile: {props.user}</h1>
+  <Jumbotron>
+    <h2>Profile: {props.user}</h2>
     <p>This is the user profile for a user named { props.user }.</p>
     <div>Current time: {new Date(props.time).toLocaleString()}</div>
     <p>
-      <button onClick={props.increment}>Click Me</button>
+      <Button bsStyle='primary' onClick={props.increment}>Click Me</Button>
       {' '}
       Clicked {props.count} times.
     </p>
-  </div>
+  </Jumbotron>
 )
